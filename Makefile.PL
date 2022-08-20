@@ -1,18 +1,28 @@
-use 5.016003;
 use ExtUtils::MakeMaker;
-# See lib/ExtUtils/MakeMaker.pm for details of how to influence
-# the contents of the Makefile that is written.
 WriteMakefile(
-    NAME              => 'Date::Holidays::US',
-    VERSION_FROM      => 'lib/Date/Holidays/US.pm', # finds $VERSION
-    PREREQ_PM         => {}, # e.g., Module::Name => 1.1
-    ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
-      (ABSTRACT_FROM  => 'lib/Date/Holidays/US.pm', # retrieve abstract from module
-       AUTHOR         => 'Michael R. Davis <mdavis@localdomain>') : ()),
-    LIBS              => [''], # e.g., '-lm'
-    DEFINE            => '', # e.g., '-DHAVE_SOMETHING'
-	# Insert -I. if you add *.h files later:
-    INC               => '', # e.g., '-I/usr/include/other'
-	# Un-comment this if you add C files to link with later:
-    # OBJECT            => '$(O_FILES)', # link all the C files too
+    NAME            => 'Date::Holidays::US',
+    VERSION_FROM    => 'lib/Date/Holidays/US.pm',
+    PREREQ_PM       => {
+                        POSIX    => 0,
+                        Exporter => 0,
+                       },
+    ABSTRACT_FROM  => 'lib/Date/Holidays/US.pm',
+    AUTHOR         => 'Michael R. Davis',
+    'META_MERGE'   => {
+                       'meta-spec' => {
+                                       'version' => 2
+                                      },
+                       'resources' => {
+                                       'repository' => {
+                                                        'web'  => 'https://github.com/mrdvt92/perl-Date-Holidays-US.git',
+                                                        'url'  => 'git@github.com:mrdvt92/perl-Date-Holidays-US.git',
+                                                        'type' => 'git'
+                                                       },
+                                       'homepage'   => 'https://github.com/mrdvt92/perl-Date-Holidays-US',
+                                       'bugtracker' => {
+                                                        'web' => 'https://github.com/mrdvt92/perl-Date-Holidays-US/issues'
+                                                       }
+                                      },
+                      }
+
 );

@@ -1,5 +1,5 @@
 Name:           perl-Date-Holidays-US
-Version:        0.01
+Version:        0.02
 Release:        1%{?dist}
 Summary:        Perl extension for blah blah blah
 License:        mit
