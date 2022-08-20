@@ -70,12 +70,12 @@ sub is_holiday {
  # it an official federal holiday. President Grover Cleveland signed the bill into law on
  # June 28.[15][4] The federal law, however, only made it a holiday for federal workers.
 
- } elsif ($year >= 1894 and $month == 9 and $day >= 1 and $day <= 6 and $wday == 1) {
+ } elsif ($year >= 1894 and $month == 9 and $day >= 1 and $day <= 7 and $wday == 1) {
    return 'Labor Day';                                               #the first Monday in September
 
  ##Columbus Day
  #Uniform Monday Holiday Act
- } elsif ($year >= 1971 and $month == 10 and $day >= 7 and $day <= 13 and $wday == 1) {
+ } elsif ($year >= 1971 and $month == 10 and $day >= 8 and $day <= 14 and $wday == 1) {
    return 'Columbus Day';                                            #the second Monday in October
 
  ##Veterans Day (>1954)/Armistice Day (<1954)
@@ -96,7 +96,7 @@ sub is_holiday {
  } elsif ($year >= 1954 and $year < 1971 and $month == 11 and $day == 12 and $wday == 1) {
    return 'Veterans Day Observed';                                   #Monday afer November 11
 
- } elsif ($year >= 1971 and $year < 1978 and $month == 11 and $day >= 22 and $day <= 28 and $wday == 1) {
+ } elsif ($year >= 1971 and $year < 1978 and $month == 10 and $day >= 22 and $day <= 28 and $wday == 1) {
    return 'Veterans Day';                                            #fourth Monday in October
 
  } elsif ($year >= 1978 and $month == 11 and $day == 10 and $wday == 5) {
