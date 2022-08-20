@@ -156,7 +156,7 @@ sub is_holiday {
 
 =head2 is_us_holiday
 
-Wrapper around is_holiday function per the API specification. See L<Date::Holidays/is_holiday>
+Wrapper around is_holiday function per the API specification. See L<Date::Holidays/is_holiday1>
 
 =cut
 
@@ -207,7 +207,7 @@ sub holidays {
 
 =head2 us_holidays
 
-Wrapper around holidays function per the API specification. See L<Date::Holidays/holidays>
+Wrapper around holidays function per the API specification. See L<Date::Holidays/holidays1>
 
 =cut
 

@@ -28,7 +28,7 @@ Returns a holiday name or undef given three arguments (year, month, day).
 
 ## is\_us\_holiday
 
-Wrapper around is\_holiday function per the API specification. See ["is\_holiday" in Date::Holidays](https://metacpan.org/pod/Date::Holidays#is_holiday)
+Wrapper around is\_holiday function per the API specification. See ["is\_holiday1" in Date::Holidays](https://metacpan.org/pod/Date::Holidays#is_holiday1)
 
 ## holidays
 
@@ -45,7 +45,7 @@ Returns a hash reference containing all of the holidays in specied year.  The ke
 
 ## us\_holidays
 
-Wrapper around holidays function per the API specification. See ["holidays" in Date::Holidays](https://metacpan.org/pod/Date::Holidays#holidays)
+Wrapper around holidays function per the API specification. See ["holidays1" in Date::Holidays](https://metacpan.org/pod/Date::Holidays#holidays1)
 
 # TODO
 
