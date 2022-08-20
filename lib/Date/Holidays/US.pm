@@ -143,7 +143,7 @@ sub is_holiday {
     return 'Christmas Day Observed';                                  #Friday before December 25
   } elsif ($year >= 1870 and $month == 12 and $day == 25) {
     return 'Christmas Day';                                           #December 25
-  } elsif ($year >= 1909 and $month == 12 and $day == 26 and $wday == 1) { #Executive Order 9636 (October 3, 1945)
+  } elsif ($year >= 1909 and $month == 12 and $day == 26 and $wday == 1) { #Executive Order 1076 (May 22, 1909)
     return 'Christmas Day Observed';                                  #Monday afer December 25
 
   } elsif ($year >= 1971 and $month == 12 and $day == 31 and $wday == 5) { #Executive Order 11582 (Feb. 11, 1971)
