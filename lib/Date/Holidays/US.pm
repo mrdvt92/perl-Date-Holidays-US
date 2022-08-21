@@ -44,6 +44,8 @@ sub is_holiday {
   my $day   = shift;
   my $wday  = POSIX::strftime(qq{%w}, 0, 0, 0, $day, $month-1, $year-1900); #12:00 am
 
+  #Ref: https://sgp.fas.org/crs/misc/R41990.pdf
+
   #5 U.S. Code § 6103 - Holidays
   #The history of federal holidays in the United States dates back to June 28, 1870
   if ($year > 1870 and $month == 1 and $day == 1) {
