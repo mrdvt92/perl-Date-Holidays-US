@@ -6,7 +6,7 @@ use POSIX; #strftime to calculate wday
 
 our @EXPORT_OK = qw(is_holiday holidays is_us_holiday us_holidays);
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 =head1 NAME
 
@@ -182,27 +182,14 @@ Returns a hash reference containing all of the holidays in the specified year.  
 sub holidays {
   my $year     = shift;
   my %holidays = ();
-  #All possible dates that could be a holiday
-  my @dates    = qw{
-                    0101 0102
-                    0115 0116 0117 0118 0119 0120 0121
-                    0222
-                    0215 0216 0217 0218 0219 0220 0221
-                    0525 0526 0527 0528 0529 0530 0531
-                    0618 0619 0620
-                    0703 0704 0705
-                    0901 0902 0903 0904 0905 0906
-                    1007 1008 1009 1010 1011 1012 1013
-                    1110 1111 1112
-                    1022 1023 1024 1025 1026 1027 1028
-                    1122 1123 1124 1125 1126 1127 1128
-                    1224 1225 1226
-                    1231
-                 };
-  foreach my $date (@dates) {
-    my ($month, $day) = $date =~ m/\A(..)(..)\Z/;
+  my $time     = POSIX::mktime(0, 0, 0, 1, 0, $year-1900); #Jan 1st
+  while (1) {
+    my ($year_calculated, $month, $day) = split /-/, POSIX::strftime("%Y-%m-%d", POSIX::gmtime($time));
+    last if $year_calculated > $year;
+    my $date          = $month . $day;
     my $name          = is_holiday($year, $month, $day);
     $holidays{$date}  = $name if defined($name);
+    $time            += 86400; #Note: Not all US days have 24 hours but we are using UTC for the date component
   }
   return \%holidays;
 }
