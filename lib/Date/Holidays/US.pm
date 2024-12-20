@@ -6,7 +6,7 @@ use POSIX; #strftime to calculate wday
 
 our @EXPORT_OK = qw(is_holiday holidays is_us_holiday us_holidays);
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 =head1 NAME
 
@@ -19,7 +19,7 @@ Date::Holidays::US - Date::Holidays Adapter for US Federal holidays
 
 =head1 DESCRIPTION
 
-Date::Holidays Adapter for US Federal holidays back to 1880 with updates from 2022.
+Date::Holidays Adapter for US Federal holidays back to 1880 with updates from 2024.
 
 =head1 METHODS
 
@@ -42,7 +42,7 @@ sub is_holiday {
   my $year  = shift;
   my $month = shift;
   my $day   = shift;
-  my $wday  = POSIX::strftime(qq{%w}, 0, 0, 0, $day, $month-1, $year-1900); #12:00 am
+  my $wday  = POSIX::strftime(qq{%w}, 0, 0, 0, $day, $month-1, $year-1900); #12:00 am (0-6 starting on Sunday)
 
   #Ref: https://sgp.fas.org/crs/misc/R41990.pdf
 
@@ -57,11 +57,13 @@ sub is_holiday {
   } elsif ($year >= 1986 and $month == 1 and $day >= 15 and $day <= 21 and $wday == 1) {
     return 'Birthday of Martin Luther King, Jr.'                       #the third Monday in January
 
-  #Inauguration Day - Really only DC and few
-  } elsif ($year >= 1965 and $month == 1 and $day == 20 and $year % 4 == 1) {                #5 U.S. Code 6103(c)
-    return 'Inauguration Day'                       #January 20 of each fourth year after 1965
-  } elsif ($year >= 1965 and $month == 1 and $day == 21 and $year % 4 == 1 and $wday == 1) { #5 U.S. Code 6103(c)
-    return 'Inauguration Day Observed'              #When January 20 ... falls on Sunday, the next succeeding day ... observance
+  #Inauguration Day - Only DC Area
+  #Purposefully processed after MLK day. In the case of concurrency, MLK is returned.
+  } elsif ($year >= 1965 and $month == 1 and $day == 20 and $year % 4 == 1 and $wday != 0) { #5 U.S. Code 6103(c)
+    return 'Inauguration Day'                       #January 20 of each fourth year after 1965 unless Sunday
+  #Note 5 U.S. Code 6103(c) provides for Monday Jan 21 to be Inauguration Day but this package returns MKL day after 1985
+  } elsif ($year == 1985 and $month == 1 and $day == 21) { #5 U.S. Code 6103(c)
+    return 'Inauguration Day'              #When January 20 ... falls on Sunday, the next succeeding day...
 
   # Washington's Birthday was celebrated on February 22 from 1879 until 1970.
   # in 1968 the Uniform Monday Holiday Act moved it to the third Monday in February
@@ -212,7 +214,7 @@ Add Federal Holidays for President mark of respect holidays (e.g. 2007-01-02 for
 
 =head1 SEE ALSO
 
-L<Date::Holidays>, L<Date::Holidays::USFederal>
+L<Date::Holidays> (wrapper), L<Date::Holidays::USFederal> (defunct), L<Date::Holidays::USExtended> (e.g., Valentine's Day, Mother's Day, etc.)
 
 =head1 AUTHOR
 
