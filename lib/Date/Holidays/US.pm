@@ -6,7 +6,7 @@ use POSIX; #strftime to calculate wday
 
 our @EXPORT_OK = qw(is_holiday holidays is_us_holiday us_holidays);
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 =head1 NAME
 
@@ -139,6 +139,10 @@ sub is_holiday {
   ##Thanksgiving Day
   } elsif ($year >= 1870 and $month == 11 and $day >= 22 and $day <= 28 and $wday == 4) {
     return 'Thanksgiving Day';                                        #the fourth Thursday in November.
+
+  ##Day before Christmas Day
+  } elsif ($year == 2024 and $month == 12 and $day == 24) {
+    return 'Day before Christmas Day';                                #Executive Order on Providing for the Closing of Executive Departments and Agencies of the Federal Government on December 24, 2024
 
   ##Christmas Day
   } elsif ($year >= 1971 and $month == 12 and $day == 24 and $wday == 5) { #Executive Order 11582 (Feb. 11, 1971)
