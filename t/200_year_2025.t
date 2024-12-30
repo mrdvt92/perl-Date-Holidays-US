@@ -5,6 +5,7 @@ use Test::More tests => 13;
 use Date::Holidays::US qw{is_holiday holidays};
 
 #From: https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/#url=2025
+#https://www.whitehouse.gov/briefing-room/presidential-actions/2024/12/30/executive-order-providing-for-the-closing-of-executive-departments-and-agencies-of-the-federal-government-on-january-9-2025/
 
 is(is_holiday(2025,  1,  1), q{New Year's Day});
 is(is_holiday(2025,  1,  9), q{National Day of Mourning for President James Earl Carter, Jr.});
