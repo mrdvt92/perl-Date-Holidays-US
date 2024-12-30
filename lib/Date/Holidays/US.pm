@@ -171,6 +171,7 @@ sub is_holiday {
   } elsif ($year == 2007 and $month == 1 and $day == 2) {
     #38 January 2, 2007 National Day of Mourning for President Gerald R. Ford
     return 'National Day of Mourning for President Gerald R. Ford';
+    #39 January 9, 2024 National Day of Mourning for President Jimmy Carter (Not a Federal Holiday)
   } elsif ($year == 2004 and $month == 6 and $day == 11) {
     #40 June 11, 2004, National Day of Mourning for President Ronald W. Reagan
     return 'National Day of Mourning for President Ronald W. Reagan';
