@@ -42,7 +42,9 @@ sub is_holiday {
   my $year  = shift;
   my $month = shift;
   my $day   = shift;
-  my $wday  = POSIX::strftime(qq{%w}, 0, 0, 0, $day, $month-1, $year-1900); #12:00 am (0-6 starting on Sunday)
+  my $wday  = shift;
+  $wday     = POSIX::strftime(qq{%w}, 0, 0, 0, $day, $month-1, $year-1900) #12:00 am (0-6 starting on Sunday)
+    unless defined $wday;
 
   #Ref: https://sgp.fas.org/crs/misc/R41990.pdf
 
@@ -212,14 +214,18 @@ Returns a hash reference containing all of the holidays in the specified year.  
 sub holidays {
   my $year     = shift;
   my %holidays = ();
-  my $time     = POSIX::mktime(0, 0, 0, 1, 0, $year-1900); #Jan 1st
+  my @jan1     = (0, 0, 0, 1, 0, $year-1900);     #Jan 1st 12:00 am (0-6 starting on Sunday)
+  my $time     = POSIX::mktime(@jan1);            #epoch
+  my $wday     = POSIX::strftime(qq{%w}, @jan1);  #day of week calc once per year vs once per day
   while (1) {
     my ($year_calculated, $month, $day) = split /-/, POSIX::strftime("%Y-%m-%d", POSIX::gmtime($time));
     last if $year_calculated > $year;
     my $date          = $month . $day;
-    my $name          = is_holiday($year, $month, $day);
+    my $name          = is_holiday($year, $month, $day, $wday);
     $holidays{$date}  = $name if defined($name);
     $time            += 86400; #Note: Not all US days have 24 hours but we are using UTC for the date component
+    $wday            += 1;
+    $wday            %= 7;
   }
   return \%holidays;
 }
