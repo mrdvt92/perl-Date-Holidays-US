@@ -19,7 +19,7 @@ Date::Holidays::US - Date::Holidays Adapter for US Federal holidays
 
 =head1 DESCRIPTION
 
-Date::Holidays Adapter for US Federal holidays back to 1880 with updates from 2024.
+Date::Holidays Adapter for US Federal holidays back to 1880 with updates up to 2025.
 
 =head1 METHODS
 
@@ -244,7 +244,7 @@ Michael R. Davis, MRDVT
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2022 by Michael R. Davis
+Copyright (C) 2025 by Michael R. Davis
 
 MIT License
 
