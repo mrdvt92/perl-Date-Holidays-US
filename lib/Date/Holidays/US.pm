@@ -44,7 +44,7 @@ sub is_holiday {
   my $day   = shift;
   my $wday  = POSIX::strftime(qq{%w}, 0, 0, 0, $day, $month-1, $year-1900); #12:00 am (0-6 starting on Sunday)
 
-  #Ref: https://sgp.fas.org/crs/misc/R41990.pdf
+  #Ref: https://sgp.fas.org/crs/misc/R41990.pdf - Federal Holidays: Evolution and Current Practices (July 1, 2021)
 
   #5 U.S. Code § 6103 - Holidays
   #The history of federal holidays in the United States dates back to June 28, 1870
