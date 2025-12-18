@@ -6,7 +6,7 @@ use POSIX; #strftime to calculate wday
 
 our @EXPORT_OK = qw(is_holiday holidays is_us_holiday us_holidays);
 
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 =head1 NAME
 
@@ -139,7 +139,12 @@ sub is_holiday {
     return 'Veterans Day Observed';                                   #Monday after November 11
 
   ##Thanksgiving Day
-  } elsif ($year >= 1870 and $month == 11 and $day >= 22 and $day <= 28 and $wday == 4) {
+  #ref: https://library.law.unc.edu/2024/11/the-history-of-the-thanksgiving-holiday/
+  } elsif ($year >= 1870 and $year  < 1939 and $month == 11 and $day >= 24 and $day <= 30 and $wday == 4) { #Law 1870 but date set by President
+    return 'Thanksgiving Day';                                        #the last Thursday in November precedent from Abraham Lincoln
+  } elsif ($year >= 1939 and $year <= 1941 and $month == 11 and $day >= 17 and $day <= 23 and $wday == 4) {  #FDR "Franksgiving"
+    return 'Thanksgiving Day';                                        #the second to last Thursday by FDR 1939-1941
+  } elsif ($year > 1941 and $month == 11 and $day >= 22 and $day <= 28 and $wday == 4) { #Law signed December 26, 1941
     return 'Thanksgiving Day';                                        #the fourth Thursday in November.
 
   ##Day before Christmas Day

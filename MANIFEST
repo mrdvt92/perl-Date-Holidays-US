@@ -9,6 +9,7 @@ perl-Date-Holidays-US.spec
 t/001_load.t
 t/002_export.t
 t/003_no_export.t
+t/011_Thanksgiving_Day.t
 t/011_Veterans_Day.t
 t/200_year_1985.t
 t/200_year_2013.t
