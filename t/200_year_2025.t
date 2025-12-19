@@ -1,7 +1,7 @@
 # - perl -
 use strict;
 use warnings;
-use Test::More tests => 13;
+use Test::More tests => 15;
 use Date::Holidays::US qw{is_holiday holidays};
 
 #From: https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/#url=2025
@@ -18,6 +18,8 @@ is(is_holiday(2025,  9,  1), q{Labor Day});
 is(is_holiday(2025, 10, 13), q{Columbus Day});
 is(is_holiday(2025, 11, 11), q{Veterans Day});
 is(is_holiday(2025, 11, 27), q{Thanksgiving Day});
+is(is_holiday(2025, 12, 24), q{Day before Christmas Day});
 is(is_holiday(2025, 12, 25), q{Christmas Day});
+is(is_holiday(2025, 12, 26), q{Day following Christmas Day});
 
-is(scalar(keys %{holidays(2025)}), 12);
+is(scalar(keys %{holidays(2025)}), 14);

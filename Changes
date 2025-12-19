@@ -1,5 +1,10 @@
 Revision history for Perl extension Date::Holidays::US.
 
+0.09 2025-12-18
+  - Added Day before and following Christmas Day 2025 - Impacts 2025
+  - Added Day before Christmas Day 2019 and 2020 - Impacts 2019-2020
+  - Added Day following Christmas Day 2014 - Impacts 2014
+
 0.08 2025-12-18
   - Fixed Thanksgiving Day between 1870 and 1941 - Impacts 1870-1938 when 5 Thursdays in November and 1939-1941
 
