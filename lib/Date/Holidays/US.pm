@@ -176,26 +176,27 @@ sub is_holiday {
 
   # Beginning with the death of President Kennedy in 1963, the incumbent President has issued an Executive order closing
   # Government offices throughout the world as a mark of respect upon the death of each President or former President.
+  # Ref: https://www.presidency.ucsb.edu/analyses/presidential-orders-upon-the-death-president
   } elsif ($year == 1963 and $month == 11 and $day == 25) {
-    #35 November 25, 1963, National Day of Mourning for President John F. Kennedy
+    #35 November 25, 1963, National Day of Mourning for President John F. Kennedy - Executive Order 11128—Closing Government Departments and Agencies on November 25, 1963
     return 'National Day of Mourning for President John F. Kennedy';
   } elsif ($year == 1973 and $month == 1 and $day == 25) {
-    #36 January 25 1973, National Day of Mourning for President Lyndon B. Johnson
+    #36 January 25 1973, National Day of Mourning for President Lyndon B. Johnson - Executive Order 11700—Providing for the Closing of Government Departments and Agencies on Thursday, January 25, 1973
     return 'National Day of Mourning for President Lyndon B. Johnson';
   } elsif ($year == 1994 and $month == 4 and $day == 27) {
-    #37 April 27, 1994, National Day of Mourning for President Richard Nixon
+    #37 April 27, 1994, National Day of Mourning for President Richard Nixon - Executive Order 12910—Providing for the Closing of Government Departments and Agencies on April 27, 1994
     return 'National Day of Mourning for President Richard Nixon';
   } elsif ($year == 2007 and $month == 1 and $day == 2) {
-    #38 January 2, 2007 National Day of Mourning for President Gerald R. Ford
+    #38 January 2, 2007 National Day of Mourning for President Gerald R. Ford - Executive Order 13421—Providing for the Closing of Government Departments and Agencies on January 2, 2007
     return 'National Day of Mourning for President Gerald R. Ford';
   } elsif ($year == 2025 and $month == 1 and $day == 9) {
-    #39 January 9, 2025 National Day of Mourning for President Jimmy Carter
+    #39 January 9, 2025 National Day of Mourning for President Jimmy Carter - Executive Order—Providing for the Closing of Executive Departments and Agencies of the Federal Government on January 9, 2025
     return 'National Day of Mourning for President James Earl Carter, Jr.';
   } elsif ($year == 2004 and $month == 6 and $day == 11) {
-    #40 June 11, 2004, National Day of Mourning for President Ronald W. Reagan
+    #40 June 11, 2004, National Day of Mourning for President Ronald W. Reagan - Executive Order 13343—Providing for the Closing of Government Departments and Agencies on June 11, 2004
     return 'National Day of Mourning for President Ronald W. Reagan';
   } elsif ($year == 2018 and $month == 12 and $day == 5) {
-    #41 December 5, 2018, National Day of Mourning for President George H. W. Bush
+    #41 December 5, 2018, National Day of Mourning for President George H. W. Bush - Executive Order on Providing for the Closing of Executive Departments and Agencies of the Federal Government on December 5, 2018
     return 'National Day of Mourning for President George H. W. Bush';
 
   } else {
